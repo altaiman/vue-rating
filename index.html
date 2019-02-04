@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Рейтинг проектов Let's Rock</title>
+</head>
+<body>
+  <section id="app" class="section">
+    <h1 class="section__title">Список проектов</h1>
+
+    <div class="section__main">
+      <div class="projects">
+        <ul class="projects__list">
+          <project
+          v-for="project in sortedProjects"
+          :title="project.title"
+          :link="project.link"
+          :rate="project.rate"
+          :key="project.id"
+          :id="project.id"
+          ></project>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section__side">
+      <form class="form" id="form">
+        <span class="form__title">Добавить проект</span>
+        <div class="form__content">
+          <label class="form__field">
+            <span>Наименование проекта</span>
+            <input type="text" v-model="formTitle" id="form-title">
+          </label>
+          <label class="form__field">
+            <span>Ссылка</span>
+            <input type="text" v-model="formLink" id="form-link">
+          </label>
+          <button class="form__submit" @click.prevent="addProject">Добавить</button>
+        </div>
+      </form>
+    </div>
+
+  </section>
+
+  <script src="script.js" charset="utf-8"></script>
+</body>
+</html>
